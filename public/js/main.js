@@ -30,7 +30,7 @@ function initHeroCarousel() {
   const carousel = document.getElementById("hero-carousel");
   if (!carousel) return;
   let slides = Array.from(carousel.querySelectorAll("img"));
-  if (slides.length < 2) return;
+  if (slides.length < 1) return;
 
   slides.forEach((img) => {
     img.addEventListener("error", () => {
@@ -40,12 +40,37 @@ function initHeroCarousel() {
   });
 
   let current = 0;
-  setInterval(() => {
+  let timer = null;
+
+  function goTo(index) {
     if (slides.length < 2) return;
     slides[current].classList.remove("active");
-    current = (current + 1) % slides.length;
+    current = (index + slides.length) % slides.length;
     slides[current].classList.add("active");
-  }, 5000);
+  }
+
+  function startAutoplay() {
+    if (timer) clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  const prevBtn = document.getElementById("hero-prev");
+  const nextBtn = document.getElementById("hero-next");
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      goTo(current - 1);
+      startAutoplay();
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      goTo(current + 1);
+      startAutoplay();
+    });
+  }
+
+  startAutoplay();
 }
 
 initHeroCarousel();
