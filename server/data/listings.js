@@ -1,5 +1,8 @@
-function muscache(hostingId, uuid) {
-  return `https://a0.muscache.com/im/pictures/hosting/Hosting-${hostingId}/original/${uuid}.jpeg?im_w=1600`;
+// Les photos sont hebergees localement dans public/images/<slug>/NN.jpg
+// (telechargees une fois via scripts/download-images.js) pour eviter le blocage
+// anti-hotlink d'Airbnb qui empechait ces photos de s'afficher sur ce site.
+function localImages(slug, count) {
+  return Array.from({ length: count }, (_, i) => `/images/${slug}/${String(i + 1).padStart(2, "0")}.jpg`);
 }
 
 const listings = [
@@ -36,13 +39,7 @@ La ferme fonctionne en grande partie en autonomie : electricite solaire et eau d
       "Wifi", "Espace de travail dedie", "Petit-dejeuner inclus",
       "Arrivee autonome (boite a cle)", "Electricite solaire", "Eau de puits",
     ],
-    images: [
-      muscache("1571803280030277558", "dc3d438e-f650-425d-b142-db214fdfa79e"),
-      muscache("1571803280030277558", "be60b0ef-1c92-4293-981f-ec81742c6870"),
-      muscache("1571803280030277558", "56c0d1b4-103f-4e54-8815-edd895fe53ea"),
-      muscache("1571803280030277558", "c63fe7e3-f445-442b-a5b8-9b2868f82bb8"),
-      muscache("1571803280030277558", "58652cdb-cd19-4d40-94fe-d946993335cd"),
-    ],
+    images: localImages("chambre-atlas", 5),
   },
   {
     slug: "maison-boheme",
@@ -75,17 +72,7 @@ Vous profitez egalement d'une seconde piscine a debordement de 17x10 m, commune,
       "Wifi", "Espace de travail dedie", "Petit-dejeuner inclus", "2 salons",
       "Cheminee", "Arrivee autonome (boite a cle)", "Electricite solaire",
     ],
-    images: [
-      muscache("1572336783870170028", "6c8bdfca-7fe0-41b2-ac6d-494edb66ad51"),
-      muscache("1572336783870170028", "1bf6e822-9e72-4ece-a757-2fd1625a4677"),
-      muscache("1572336783870170028", "b7c04fcf-de86-4ddd-9c3e-4719c4d1d4a6"),
-      muscache("1572336783870170028", "3fb8bc49-2ba5-42d4-a595-b42f230cbf65"),
-      muscache("1572336783870170028", "744ac462-0c0f-4b59-a361-1aa562741475"),
-      muscache("1572336783870170028", "517c1826-9414-4e8c-b8f9-8faf01177940"),
-      muscache("1572336783870170028", "53359ea3-3ae1-4edb-9d21-22058d2fe0b9"),
-      muscache("1572336783870170028", "14c8e38d-ff69-4609-a625-bed79f266cc0"),
-      muscache("1572336783870170028", "5694a495-ed29-4555-866a-26edb60c8ba0"),
-    ],
+    images: localImages("maison-boheme", 9),
   },
   {
     slug: "maison-berbere",
@@ -120,16 +107,7 @@ L'eau chaude est alimentee par l'electricite solaire et l'eau du puits.`,
       "Stationnement gratuit sur place", "Terrasse sur le toit", "TV",
       "Arrivee autonome (boite a cle)", "Cafe a domicile", "Electricite solaire",
     ],
-    images: [
-      muscache("1684668083198835450", "383a8d68-5469-4f1e-bb32-7ad43c5d0dc7"),
-      muscache("1684668083198835450", "89462aa7-2ce8-44f0-84f9-c114864d1418"),
-      muscache("1684668083198835450", "42e6a272-4a1d-4f65-a1c4-b9def2ebe2be"),
-      muscache("1684668083198835450", "029e7b87-faba-4a8d-b879-da8995778cc1"),
-      muscache("1684668083198835450", "3ef69f12-821a-4f96-8c46-88e9422620e4"),
-      muscache("1684668083198835450", "09b089ed-7b8d-4c75-92d8-4b8655a8acfc"),
-      muscache("1684668083198835450", "8bddf1e8-1066-4189-9b29-86acc586c459"),
-      muscache("1684668083198835450", "76b1a375-f143-4a9b-9811-3f87bfc1084d"),
-    ],
+    images: localImages("maison-berbere", 8),
   },
   {
     slug: "suite-atlas",
@@ -162,14 +140,7 @@ Le petit-dejeuner est inclus dans votre sejour. Vous profitez librement des deux
       "Wifi", "Espace de travail dedie", "Petit-dejeuner inclus",
       "Arrivee autonome (boite a cle)", "Electricite solaire",
     ],
-    images: [
-      muscache("1571860423248417815", "8df7e71d-803c-4dbc-a37c-31e330020a0d"),
-      muscache("1571860423248417815", "ff26fb73-a4cf-41fb-bb98-48f8e96900d7"),
-      muscache("1571860423248417815", "cc273eb4-2006-4519-8b7d-ff630320d797"),
-      muscache("1571860423248417815", "7670309c-bce7-45a8-8cfb-a0796a31d456"),
-      muscache("1571860423248417815", "d5c1eb46-b4c7-4133-8b17-0dd20ca61a10"),
-      muscache("1571860423248417815", "ff6716f7-27da-478b-950a-1964bed50dd3"),
-    ],
+    images: localImages("suite-atlas", 6),
   },
   {
     slug: "van-vintage",
@@ -204,13 +175,7 @@ Le van est situe dans un environnement naturel, soumis au vent et au sable : ces
       "Espace de travail dedie", "Stationnement gratuit sur place",
       "Douche et toilettes privees exterieures", "Brasero berbere", "Electricite solaire",
     ],
-    images: [
-      muscache("1331900022629792503", "d52d35d8-dd28-4384-ad22-6a1a2fa310c7"),
-      muscache("1331900022629792503", "1f7217e3-c874-46b6-8334-ffcd463b87ac"),
-      muscache("1331900022629792503", "849ed095-9ffb-4051-8d9b-567688236900"),
-      muscache("1331900022629792503", "2082c4b7-5ae7-4c66-8aa2-f71f8dc9bdf3"),
-      muscache("1331900022629792503", "ca2a1190-e345-4fb1-b14a-6bec339cbf80"),
-    ],
+    images: localImages("van-vintage", 5),
   },
 ];
 
