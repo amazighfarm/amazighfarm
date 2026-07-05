@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Administration — Amazigh Farm</title>
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .tag { font-family: "Jost", sans-serif; font-size: .68rem; padding: 3px 8px; border: 1px solid var(--line); }
+  .tag-confirmed { color: var(--olive); border-color: var(--olive); }
+  .tag-pending { color: var(--clay); border-color: var(--clay); }
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">Amazigh Farm</a>
+    <span class="label">Administration</span>
+  </div>
+</header>
+
+<div class="admin-wrap">
+  <div id="login-box">
+    <h2 style="font-style:italic;">Connexion</h2>
+    <p>Entrez le jeton d'administration (ADMIN_TOKEN défini dans le fichier .env du serveur).</p>
+    <div class="field" style="max-width:340px;">
+      <label>Jeton admin</label>
+      <input type="password" id="token-input" />
+    </div>
+    <button class="link-cta" id="login-btn" style="margin-top:14px;background:none;border:none;border-bottom:1px solid var(--ink);cursor:pointer;padding-bottom:2px;">Se connecter</button>
+    <div class="form-msg error" id="login-msg"></div>
+  </div>
+
+  <div id="dashboard" style="display:none;">
+    <h2 style="font-style:italic;">Réservations</h2>
+    <table>
+      <thead><tr><th>Statut</th><th>Hébergement</th><th>Client</th><th>Arrivée</th><th>Départ</th><th>Montant</th></tr></thead>
+      <tbody id="bookings-body"></tbody>
+    </table>
+
+    <h2 style="margin-top:50px;font-style:italic;">Bloquer des dates manuellement</h2>
+    <p style="font-size:.85rem;">Utile pour un séjour personnel, une maintenance, ou pour refléter une réservation prise ailleurs.</p>
+    <form class="inline" id="block-form">
+      <div class="field">
+        <label>Hébergement</label>
+        <select id="block-slug"></select>
+      </div>
+      <div class="field">
+        <label>Du</label>
+        <input type="date" id="block-start" required />
+      </div>
+      <div class="field">
+        <label>Au</label>
+        <input type="date" id="block-end" required />
+      </div>
+      <div class="field">
+        <label>Raison</label>
+        <input type="text" id="block-reason" placeholder="Optionnel" />
+      </div>
+      <button class="link-cta" type="submit" style="background:none;border:none;border-bottom:1px solid var(--ink);cursor:pointer;padding-bottom:2px;">Bloquer</button>
+    </form>
+    <div class="form-msg" id="block-msg"></div>
+
+    <h2 style="margin-top:50px;font-style:italic;">Dates bloquées</h2>
+    <table>
+      <thead><tr><th>Hébergement</th><th>Du</th><th>Au</th><th>Source</th><th>Raison</th><th></th></tr></thead>
+      <tbody id="blocks-body"></tbody>
+    </table>
+  </div>
+</div>
+
+<script src="/js/admin.js"></script>
+</body>
+</html>

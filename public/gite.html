@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title id="page-title">Amazigh Farm</title>
+<link rel="stylesheet" href="/css/style.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">Amazigh Farm</a>
+    <nav class="nav-links">
+      <a href="/#hebergements">Hébergements</a>
+      <a href="/#ferme">La ferme</a>
+      <a href="/experiences.html">Expériences</a>
+    </nav>
+    <a class="link-cta" href="https://wa.me/212665773800" target="_blank" rel="noopener">Nous écrire</a>
+  </div>
+</header>
+
+<div class="container">
+  <div id="gallery" class="gallery-strip"></div>
+
+  <div class="detail-layout">
+    <div>
+      <h1 class="detail-title" id="listing-title">Chargement…</h1>
+      <div class="detail-meta" id="listing-meta"></div>
+      <div class="detail-location" id="listing-location"></div>
+
+      <p class="description-text" id="listing-description"></p>
+
+      <div class="amenity-line" id="listing-amenities"></div>
+    </div>
+
+    <aside class="booking-panel">
+      <div class="box-price"><span id="box-price">--</span> <small>/ nuit</small></div>
+      <div class="rating-line" id="box-rating"></div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Arrivée</label>
+          <input type="text" id="checkin" placeholder="Choisir" readonly />
+        </div>
+        <div class="field">
+          <label>Départ</label>
+          <input type="text" id="checkout" placeholder="Choisir" readonly />
+        </div>
+        <div class="field full-row">
+          <label>Voyageurs</label>
+          <select id="guests"></select>
+        </div>
+        <div class="field full-row">
+          <label>Nom complet</label>
+          <input type="text" id="name" placeholder="Votre nom" />
+        </div>
+        <div class="field full-row">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="vous@exemple.com" />
+        </div>
+        <div class="field full-row">
+          <label>Téléphone (optionnel)</label>
+          <input type="tel" id="phone" placeholder="+212 ..." />
+        </div>
+      </div>
+
+      <div class="price-breakdown" id="price-breakdown" style="display:none;">
+        <div class="row"><span id="pb-nights-label">0 nuit</span><span id="pb-nights-amount">0</span></div>
+        <div class="row"><span>Ménage</span><span id="pb-cleaning">0</span></div>
+        <div class="row total"><span>Total</span><span id="pb-total">0</span></div>
+      </div>
+
+      <button class="btn-elegant" id="book-btn" disabled>Choisissez vos dates</button>
+      <div class="form-msg" id="form-msg"></div>
+
+      <p class="contact-note">Une question, un autre mode de paiement ?
+        <a href="https://wa.me/212665773800" target="_blank" rel="noopener">Écrivez-nous</a>.
+      </p>
+    </aside>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">
+      <span class="brand">Amazigh Farm</span>
+      <span class="label">Oumnass · Marrakech</span>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Amazigh Farm</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <span class="lb-close" id="lb-close">&times;</span>
+  <img id="lb-img" src="" alt="" />
+  <div class="lb-nav">
+    <span id="lb-prev">&larr;</span>
+    <span id="lb-next">&rarr;</span>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/l10n/fr.js"></script>
+<script src="/js/listing.js"></script>
+</body>
+</html>
